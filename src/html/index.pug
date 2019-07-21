@@ -1,0 +1,48 @@
+extends /layout/_application
+
+block content
+  header.header
+    nav.nav-bar
+      div.container
+        div.logo
+        div.github
+          p.linkToGit
+            a(href="https://github.com/HAGARIHAYATO")
+             i.fab.fa-github-square github
+      div.container.hundle
+        div.link
+          p.link-text TOP
+        div.link
+          p.link-text ABOUT
+        div.link
+          p.link-text CONTACT
+  div.main-container
+    section.num1
+      h2.main-title THANKS FOR YOUR COMING
+      div.picture
+      div.info-container
+        div.info
+          div.wrapper
+            h3.info-message NEW INFORMATION
+            table
+              tbody
+                - for (var i =0; i<10; i++)
+                  tr
+                    td.date
+                    td.contents
+    section.num2
+      h2.main-title ABOUT ME
+      div.profile-container
+        p NAME: HAGARI HAYATO
+        p AGE: 24
+        p JOB: u-student
+        p HOBBY: SKATE
+      div.detail
+        a(href="#") MY BLOG
+    section.num3
+      h2.main-title CONTACT
+      div.message-container
+        div.wrapper
+          input.text-input
+  footer.footer
+    p.footer-text &copy;hayato.inc

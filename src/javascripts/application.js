@@ -23,6 +23,20 @@ hundle.children[2].addEventListener("click",function num3(){
 // contact機能
 const screen = document.querySelector(".message-container");
 const textInput = document.querySelector(".text-input");
+const modal = document.querySelector(".modal");
+const modalOverLay = document.querySelector(".modal-overlay");
+const dModal = document.querySelector(".x-mark");
+// モーダル出現
+screen.addEventListener("click", (evt)=>{
+    modalOverLay.style.display="block";
+    modal.style.display="block";
+});
+// モーダル消える
+dModal.addEventListener("click", (evt)=>{
+    modalOverLay.style.display="none";
+    modal.style.display="none";
+});
+// チャット入力
 textInput.addEventListener("keypress",(evt)=>{
     if(evt.key === "Enter"){
         console.log("good work!!!");

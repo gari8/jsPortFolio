@@ -191,7 +191,7 @@ table{
   margin: 0 auto;
   border: 5px solid black;
   border-radius: 10px;
-  background-color: white;
+  background-color: skyblue;
   overflow: scroll;
 }
 
@@ -224,7 +224,7 @@ table{
   width: 30px;
   height: 30px;
   position: absolute;
-  top: -102px;
+  top: -90px;
   right: 5px;
 }
 
@@ -244,6 +244,7 @@ label{
 
 .modal-container{
   width: 100%;
+  height: 40%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -276,6 +277,9 @@ label{
     transition: all 0.5s;
   }
 }
+
+
+
 .name-input{
   width: 40%;
   height: 30px;
@@ -289,6 +293,77 @@ label{
     opacity: 0.4;
     transition: all 0.5s;
   }
+}
+
+.submit{
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  color: white;
+  position:absolute;
+  top: 110px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  // margin:10px auto;
+  text-align: center;
+  line-height: 30px;
+  box-shadow: 0 3px black;
+  transition: all 0.1s;
+  font-size: 18px;
+  background-color: royalblue;
+  &:active{
+    box-shadow: 0 0 black;
+    top: 113px;
+  }
+  &:hover{
+    background-color: blue;
+  }
+}
+
+.comment{
+  width: 50%;
+  border: 1px solid $color2;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  margin-left: 45%;
+  background-color: white;
+  box-shadow: 1px 2px grey;
+}
+
+.master-comment{
+  width: 50%;
+  border: 1px solid $color2;
+  border-radius: 10px;
+  margin-left: 5%;
+  margin-bottom: 30px;
+  background-color: lightgreen;
+  box-shadow: 1px 2px grey;
+}
+
+.output-name{
+  width: 30%;
+  height: 20px;
+}
+
+.output-text{
+  width: 80%;
+  margin: 0 auto 10px auto;
+}
+
+.ot{
+  font-size: 24px;
+  // font-weight: bold;
+  color: black;
+  line-height: 30px;
+  word-wrap: break-word;
+}
+
+.on{
+  font-size: 16px;
+  font-weight: bold;
+  color: $color2;
+  line-height: 16px;
+  text-align: center;
 }
 
 .footer{

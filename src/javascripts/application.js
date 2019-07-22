@@ -23,6 +23,9 @@ hundle.children[2].addEventListener("click",function num3(){
 // contact機能
 const screen = document.querySelector(".message-container");
 const textInput = document.querySelector(".text-input");
+const nameInput = document.querySelector(".name-input");
+const submit = document.querySelector(".submit");
+console.log(submit);
 const modal = document.querySelector(".modal");
 const modalOverLay = document.querySelector(".modal-overlay");
 const dModal = document.querySelector(".x-mark");
@@ -37,12 +40,23 @@ dModal.addEventListener("click", (evt)=>{
     modal.style.display="none";
 });
 // チャット入力
-textInput.addEventListener("keypress",(evt)=>{
-    if(evt.key === "Enter"){
-        console.log("good work!!!");
-        console.log(evt.target.value);
-        screen.innerHTML += ('<div><p>' + evt.target.value + '</p></div>');
-        evt.target.value = "";
+// nameがmasterなら左側に出力それ以外なら右側に出力
+// textが空なら表示されない
+submit.addEventListener("click",(evt)=>{
+    if(textInput.value !== ''){
+        if(nameInput.value !== 'master'){
+            screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+            + nameInput.value + '</p></div><div class="output-text"><p class="ot">'
+            + textInput.value + '</p></div></div>');
+            textInput.value = "";
+            nameInput.value = "";
+        }else{
+            screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
+            + nameInput.value + '</p></div><div class="output-text"><p class="ot">'
+            + textInput.value + '</p></div></div>');
+            textInput.value = "";
+            nameInput.value = "";
+        }
     }
 });
 

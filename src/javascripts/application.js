@@ -44,18 +44,54 @@ dModal.addEventListener("click", (evt)=>{
 // textが空なら表示されない
 submit.addEventListener("click",(evt)=>{
     if(textInput.value !== ''){
-        if(nameInput.value !== 'master'){
-            screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-            + nameInput.value + '</p></div><div class="output-text"><p class="ot">'
-            + textInput.value + '</p></div></div>');
-            textInput.value = "";
-            nameInput.value = "";
-        }else{
+        if(nameInput.value === 'master'){
             screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
             + nameInput.value + '</p></div><div class="output-text"><p class="ot">'
             + textInput.value + '</p></div></div>');
             textInput.value = "";
             nameInput.value = "";
+        }else if(nameInput.value === ''){
+            screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+            + 'user' + '</p></div><div class="output-text"><p class="ot">'
+            + textInput.value + '</p></div></div>');
+            textInput.value = "";
+            nameInput.value = "";
+        }else{
+            screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+            + nameInput.value + '</p></div><div class="output-text"><p class="ot">'
+            + textInput.value + '</p></div></div>');
+            textInput.value = "";
+            nameInput.value = "";
+        }
+    modalOverLay.style.display="none";
+    modal.style.display="none";
+    }
+});
+// エンターキーでも発火
+modal.addEventListener("keypress",(evt)=>{
+    if(evt.key === 'Enter'){
+        if(textInput.value !== ''){
+            if(nameInput.value === 'master'){
+                screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
+                + nameInput.value + '</p></div><div class="output-text"><p class="ot">'
+                + textInput.value + '</p></div></div>');
+                textInput.value = "";
+                nameInput.value = "";
+            }else if(nameInput.value === ''){
+                screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+                + 'user' + '</p></div><div class="output-text"><p class="ot">'
+                + textInput.value + '</p></div></div>');
+                textInput.value = "";
+                nameInput.value = "";
+            }else{
+                screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+                + nameInput.value + '</p></div><div class="output-text"><p class="ot">'
+                + textInput.value + '</p></div></div>');
+                textInput.value = "";
+                nameInput.value = "";
+            }
+        modalOverLay.style.display="none";
+        modal.style.display="none";
         }
     }
 });

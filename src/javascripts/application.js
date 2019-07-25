@@ -34,6 +34,7 @@ screen.addEventListener("click", (evt)=>{
     modalOverLay.style.display="block";
     modal.style.display="block";
 });
+
 // モーダル消える
 dModal.addEventListener("click", (evt)=>{
     modalOverLay.style.display="none";

@@ -1,3 +1,46 @@
+const infoDate = document.querySelector(".new-info");
+//axios
+import axios from 'axios';
+axios.get('https://script.google.com/macros/s/AKfycbw3Cg2bLfJXtd5ck9KlTgzrKEDifG2MDopfcJozJujnE_8kH8o/exec')
+  .then(function (response) {
+    // handle success
+    for(let i = 0; i < response.data.length; i++){
+        infoDate.innerHTML += `<tr>
+        <td class="date">${response.data[i].dateTime}</td>
+        <td class="contents">${response.data[i].information}</td>
+        </tr>`
+    }
+  })
+  .catch(function (error) {
+    // handle error
+    infoDate.innerHTML += `<tr>
+        <td class="date">
+            <p>通信中...</p>
+        </td>
+        <td class="contents">
+            <p>お待ち下さい...</p>
+        </td>
+    </tr>`
+  })
+  .finally(function () {
+    // always executed
+    infoDate.innerHTML += `<tr>
+        <td class="date"></td>
+        <td class="contents"></td>
+        </tr>
+        <tr>
+        <td class="date"></td>
+        <td class="contents"></td>
+        </tr>
+        <tr>
+        <td class="date"></td>
+        <td class="contents"></td>
+        </tr>
+        <tr>
+        <td class="date"></td>
+        <td class="contents"></td>
+        </tr>`
+  });
 // ページ遷移機能
 const hundle = document.querySelector(".hundle");
 const view = document.querySelector(".main-container");
@@ -6,26 +49,22 @@ hundle.children[0].addEventListener("click",function num1(){
     view.children[0].style.display="block";
     view.children[1].style.display="none";
     view.children[2].style.display="none";
-    console.log(view.children[0]);
 });
 hundle.children[1].addEventListener("click",function num2(){
     view.children[0].style.display="none";
     view.children[1].style.display="block";
     view.children[2].style.display="none";
-    console.log(view.children[1]);
 });
 hundle.children[2].addEventListener("click",function num3(){
     view.children[0].style.display="none";
     view.children[1].style.display="none";
     view.children[2].style.display="block";
-    console.log(view.children[2]);
 });
 // contact機能
 const screen = document.querySelector(".message-container");
 const textInput = document.querySelector(".text-input");
 const nameInput = document.querySelector(".name-input");
 const submit = document.querySelector(".submit");
-console.log(submit);
 const modal = document.querySelector(".modal");
 const modalOverLay = document.querySelector(".modal-overlay");
 const dModal = document.querySelector(".x-mark");

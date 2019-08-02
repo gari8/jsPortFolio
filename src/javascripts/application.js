@@ -79,6 +79,51 @@ dModal.addEventListener("click", (evt)=>{
     modalOverLay.style.display="none";
     modal.style.display="none";
 });
+
+
+
+  // Make a request for a user with a given ID
+axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec')
+  .then(function (response) {
+    // handle success
+    for(let i = 0; i < response.data.length; i++){
+        if(response.data[i].user === 'master'){
+            screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
+            + response.data[i].user + '</p></div><div class="output-text"><p class="ot">'
+            + response.data[i].comment + '</p></div></div>');
+        }else if(nameInput.value === ''){
+            screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+            + 'user' + '</p></div><div class="output-text"><p class="ot">'
+            + response.data[i].comment + '</p></div></div>');
+        }else{
+            screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+            + response.data[i].user + '</p></div><div class="output-text"><p class="ot">'
+            + response.data[i].comment + '</p></div></div>');
+        }
+    }
+  })
+  .catch(function (error) {
+    // handle error
+    screen.innerHTML += (
+    '</p></div><div class="output-text"><p class="ot">'
+            + "通信環境に移動してください..." + '</p></div></div>')
+  })
+  .finally(function () {
+    // always executed
+  });
+
+
+// ここからpost未着手
+axios.post('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec', {
+    name: "me",
+    comment: "hi"
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+  });
+
 // チャット入力
 // nameがmasterなら左側に出力それ以外なら右側に出力
 // textが空なら表示されない

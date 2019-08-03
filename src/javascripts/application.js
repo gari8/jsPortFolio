@@ -88,96 +88,102 @@ dModal.addEventListener("click", (evt)=>{
 // チャット入力
 // nameがmasterなら左側に出力それ以外なら右側に出力
 // textが空なら表示されない
-submit.addEventListener("click",(evt)=>{
+submit.addEventListener("click",async (evt)=>{
     if(textInput.value !== ''){
-        axios.post('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec', {
+            await axios.post('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec', {
           name: nameInput.value,
           comment: textInput.value
         }, {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
           .then(response => {
-            console.log(response);
-            for(let i = 0; i < response.data.length; i++){
-                if(response.data[i].name === 'master'){
-                    screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
-                    + response.data[i].name + '</p></div><div class="output-text"><p class="ot">'
-                    + response.data[i].comment + '</p></div></div>');
-                }else if(nameInput.value === ''){
-                    screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-                    + 'user' + '</p></div><div class="output-text"><p class="ot">'
-                    + response.data[i].comment + '</p></div></div>');
-                }else{
-                    screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-                    + response.data[i].name + '</p></div><div class="output-text"><p class="ot">'
-                    + response.data[i].comment + '</p></div></div>');
-                }
-            }
+            console.log(response.data)
           }).catch(error => {
             console.log(error);
             screen.innerHTML += (
             '</p></div><div class="output-text"><p class="ot">'
                     + "通信環境に移動してください..." + '</p></div></div>')
           });
-    textInput.value = "";
-    nameInput.value = "";
-    modalOverLay.style.display="none";
-    modal.style.display="none";
-    }
-});
-
-// エンターキーでも発火
-modal.addEventListener("keypress",(evt)=>{
-    if(evt.key === 'Enter'){
-        if(textInput.value !== ''){
-            axios.post('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec', {
-              name: nameInput.value,
-              comment: textInput.value
-            }, {
-              headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
-              .then(response => {
-                console.log(response.data[0]);
-                for(let i = 0; i < response.data.length; i++){
-                    if(response.data[i].name === 'master'){
-                        screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
-                        + response.data[i].name + '</p></div><div class="output-text"><p class="ot">'
-                        + response.data[i].comment + '</p></div></div>');
-                    }else if(nameInput.value === ''){
-                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-                        + 'user' + '</p></div><div class="output-text"><p class="ot">'
-                        + response.data[i].comment + '</p></div></div>');
-                    }else{
-                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-                        + response.data[i].name + '</p></div><div class="output-text"><p class="ot">'
-                        + response.data[i].comment + '</p></div></div>');
-                    }
-                }
-              }).catch(error => {
-                console.log(error);
-                screen.innerHTML += (
-                '</p></div><div class="output-text"><p class="ot">'
-                        + "通信環境に移動してください..." + '</p></div></div>')
-              });
         textInput.value = "";
         nameInput.value = "";
         modalOverLay.style.display="none";
         modal.style.display="none";
+        await axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec')
+              .then(function (response) {
+                　　// handle success
+                　　let ln = (response.data.length -1)
+                    if(response.data[ln].name === 'master'){
+                        screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
+                        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+                        + response.data[ln].comment + '</p></div></div>');
+                    }else if(response.data[ln].name === ''){
+                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+                        + 'user' + '</p></div><div class="output-text"><p class="ot">'
+                        + response.data[ln].comment + '</p></div></div>');
+                    }else{
+                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+                        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+                        + response.data[ln].comment + '</p></div></div>');
+                    }
+              })
+        }
+});
+
+// エンターキーでも発火
+modal.addEventListener("keypress",async (evt)=>{
+    if(evt.key === 'Enter'){
+        if(textInput.value !== ''){
+            await axios.post('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec', {
+          name: nameInput.value,
+          comment: textInput.value
+        }, {
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+          .then(response => {
+            console.log(response.data)
+          }).catch(error => {
+            console.log(error);
+            screen.innerHTML += (
+            '</p></div><div class="output-text"><p class="ot">'
+                    + "通信環境に移動してください..." + '</p></div></div>')
+          });
+        textInput.value = "";
+        nameInput.value = "";
+        modalOverLay.style.display="none";
+        modal.style.display="none";
+        await axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec')
+              .then(function (response) {
+                　　// handle success
+                　　let ln = (response.data.length -1)
+                    if(response.data[ln].name === 'master'){
+                        screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
+                        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+                        + response.data[ln].comment + '</p></div></div>');
+                    }else if(response.data[ln].name === ''){
+                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+                        + 'user' + '</p></div><div class="output-text"><p class="ot">'
+                        + response.data[ln].comment + '</p></div></div>');
+                    }else{
+                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+                        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+                        + response.data[ln].comment + '</p></div></div>');
+                    }
+              })
         }
     }
 });
 
 // get success
 // このgetがreloadしないと取ってこれない
- axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec')
-  .then(function (response) {
+axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec')
+.then(function (response) {
     // handle success
     for(let i = 0; i < response.data.length; i++){
         if(response.data[i].name === 'master'){
             screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
             + response.data[i].name + '</p></div><div class="output-text"><p class="ot">'
             + response.data[i].comment + '</p></div></div>');
-        }else if(nameInput.value === ''){
+        }else if(response.data[i].name === ''){
             screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
             + 'user' + '</p></div><div class="output-text"><p class="ot">'
             + response.data[i].comment + '</p></div></div>');
@@ -187,13 +193,13 @@ modal.addEventListener("keypress",(evt)=>{
             + response.data[i].comment + '</p></div></div>');
         }
     }
-  })
-  .catch(function (error) {
+})
+.catch(function (error) {
     // handle error
     screen.innerHTML += (
     '</p></div><div class="output-text"><p class="ot">'
             + "通信環境に移動してください..." + '</p></div></div>')
-  })
-  .finally(function () {
-    // always executed
-  });
+    })
+.finally(function () {
+// always executed
+});

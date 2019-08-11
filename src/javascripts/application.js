@@ -10,7 +10,7 @@ axios.get('https://script.google.com/macros/s/AKfycbw3Cg2bLfJXtd5ck9KlTgzrKEDifG
         let dateYear = new Date(response.data[i].dateTime).getFullYear();
         let dataDate = new Date(response.data[i].dateTime).getDate();
         infoDate.innerHTML += `<tr>
-        <td class="date">${dateYear}年${dateMonth}月${dataDate}日</td>
+        <td class="date">${dateYear}年${dateMonth+1}月${dataDate}日</td>
         <td class="contents">${response.data[i].information}</td>
         </tr>`
     }

@@ -12,7 +12,6 @@ $color4: #551A8B;
 .main{
   width: 100%;
   min-height: 100%;
-  overflow-y: hidden;
 }
 
 .header{
@@ -34,7 +33,7 @@ $color4: #551A8B;
   height: 100%;
   background-image: url("./images/logo-skate.png");
   background-position: center;
-  background-size: (200px, 60px);
+  background-size: contain;
   background-repeat: no-repeat;
 }
 
@@ -142,19 +141,9 @@ $color4: #551A8B;
 }
 
 .info-container{
-  position: relative;
   height: 50%;
   width: 40%;
   margin-top: 3%;
-}
-
-.info-message{
-  padding: 0 15px;
-  text-align: center;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 table{
@@ -426,3 +415,120 @@ label{
   color: $color4;
   font-weight: bold;
 }
+
+@media screen and (max-width:768px) {
+
+  main{
+    overflow: visible;
+  }
+
+  .logo{
+  }
+
+  .num1-wrapper{
+    display: block;
+  }
+
+  .num1-container,
+  .info-container,
+  .num2-container,
+  .message-container{
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .container{
+    width: 50%;
+  }
+
+  .link{
+    width: 30%;
+  }
+
+  .num2-item{
+    width: 80%;
+  }
+
+  .num3-container{
+    display: block;
+    margin: 30px auto;
+  }
+
+  .modal{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .modal-container{
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width:375px) {
+
+  main{
+    overflow: visible;
+  }
+
+  .num1{
+    display: block;
+  }
+
+  .num2{
+    display: block;
+    background-color: lighten($color3,20%);
+  }
+
+  .num3{
+    display: block;
+  }
+
+  .logo{
+  }
+
+  .num1-wrapper{
+    display: block;
+  }
+
+  .num1-container,
+  .info-container,
+  .num2-container,
+  .modal-container,
+  .message-container{
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .container{
+    width: 100%;
+  }
+
+  .hundle{
+    display: none;
+  }
+
+  .main-title{
+    width: 100%;
+  }
+
+  .num2-item{
+    width: 100%;
+  }
+
+  .num3-container{
+    display: block;
+    margin: 30px auto;
+  }
+
+  .modal{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .modal-container{
+    margin: 0 auto;
+  }
+}
+
+
+

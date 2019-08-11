@@ -13,46 +13,51 @@ block content
         div.link
           p.link-text TOP
         div.link
-          p.link-text ABOUT
+          p.link-text PORTFOLIO
         div.link
           p.link-text CONTACT
   div.main-container
     section.num1
-      h2.main-title THANKS FOR YOUR COMING
-      div.picture
-      div.info-container
-        div.info
-          div.wrapper
-            h3.info-message - INFORMATION -
-            table
-              tbody.new-info
-                tr
-                  td.date-header
-                    p 日付
-                  td.contents-header
-                    p お知らせ
+      div.num1-wrapper
+        div.num1-container
+          h2.main-title THANKS FOR YOUR COMING
+          div.picture
+          div.profile-container
+            p NAME: HAGARI HAYATO
+            p AGE: 24
+            p JOB: u-student
+            p HOBBY: SKATE
+          div.detail
+            a(href="#") MY BLOG
+        div.info-container
+          div.info
+            div.wrapper
+              h3.info-message - INFORMATION -
+              table
+                tbody.new-info
+                  tr
+                    td.date-header
+                      p 日付
+                    td.contents-header
+                      p お知らせ
     section.num2
-      h2.main-title ABOUT ME
-      div.profile-container
-        p NAME: HAGARI HAYATO
-        p AGE: 24
-        p JOB: u-student
-        p HOBBY: SKATE
-      div.detail
-        a(href="#") MY BLOG
+      h2.main-title PORTFOLIO
+      div.num2-container
     section.num3
-      h2.main-title CONTACT
-      div.message-container
-        div.wrapper
-      div.modal
-        div.modal-container
-          div.x-mark
-          div.modal-item
-            label.name NAME :
-            input.name-input
-          div.modal-item
-            textarea.text-input
-          h4.submit GO
+      div.num3-container
+        section.modal-container
+          h2.main-title CONTACT
+          div.modal
+            div.modal-item-container
+              div.x-mark
+              div.modal-item
+                label.name NAME :
+                input.name-input
+              div.modal-item
+                textarea.text-input
+              h4.submit GO
+        div.message-container
+          div.wrapper
   div.modal-overlay
   footer.footer
     p.footer-text &copy;hayato.inc

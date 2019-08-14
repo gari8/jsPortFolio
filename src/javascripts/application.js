@@ -12,6 +12,27 @@ const view = document.querySelector(".main-container");
 console.log(view.children)
 // portfolio追加
 const portFolioBoard = document.querySelector(".num2-container");
+// (仮)お知らせスライドアウト
+const infoBar = document.querySelector(".info-container");
+const mainBar = document.querySelector(".num1-container");
+const trigger = document.querySelector(".trigger");
+let i = 0;
+
+// topページお知らせスライド
+trigger.addEventListener("click", (evt)=>{
+    i++;
+    if(i%2 !== 0){
+        infoBar.style.width="0";
+        mainBar.style.width="100%";
+        mainBar.style.margin="0";
+        trigger.style.transform="rotate(-45deg)";
+    }else if (i%2 === 0){
+        infoBar.style.width="40%";
+        mainBar.style.width="50%";
+        mainBar.style.margin="0 0 0 10%";
+        trigger.style.transform="rotate(0deg)";
+    }
+})
 
 // ページ遷移機能
 top.addEventListener("click",function num1(){

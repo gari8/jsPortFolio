@@ -23,6 +23,7 @@ trigger.addEventListener("click", (evt)=>{
     i++;
     if(i%2 !== 0){
         infoBar.style.width="0";
+        infoBar.style.height="0"
         mainBar.style.width="100%";
         mainBar.style.margin="0";
         trigger.style.transform="rotate(-45deg)";

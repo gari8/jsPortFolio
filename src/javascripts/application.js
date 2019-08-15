@@ -1,3 +1,5 @@
+import Chat from "modules/chat"
+
 const infoDate = document.querySelector(".new-info");
 // contact機能
 const screen = document.querySelector(".message-container");
@@ -17,6 +19,8 @@ const infoBar = document.querySelector(".info-container");
 const mainBar = document.querySelector(".num1-container");
 const trigger = document.querySelector(".trigger");
 let i = 0;
+
+const chat = new Chat()
 
 // topページお知らせスライド
 trigger.addEventListener("click", (evt)=>{
@@ -133,35 +137,28 @@ axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8v
 // nameがmasterなら左側に出力それ以外なら右側に出力
 // textが空なら表示されない
 submit.addEventListener("click",async (evt)=>{
-    if(textInput.value !== ''){
-        await axios.post('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec', {
-          name: nameInput.value,
-          comment: textInput.value
-        }, {
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        })
-          .then(response => {
-          }).catch(error => {
-          });
-        textInput.value = "";
-        nameInput.value = "";
-        await axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec')
-              .then(function (response) {
-                　　// handle success
-                　　let ln = (response.data.length -1)
-                    if(response.data[ln].name === 'master'){
-                        screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
-                        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
-                        + response.data[ln].comment + '</p></div></div>');
-                    }else if(response.data[ln].name === ''){
-                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-                        + 'user' + '</p></div><div class="output-text"><p class="ot">'
-                        + response.data[ln].comment + '</p></div></div>');
-                    }else{
-                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-                        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
-                        + response.data[ln].comment + '</p></div></div>');
-                    }
-              })
-        }
+  if (textInput.value === '') return
+
+  await chat.send(nameInput.value, textInput.value)
+
+  textInput.value = "";
+  nameInput.value = "";
+  const response = await chat.fetch()
+  console.log(response)
+
+  let ln = (response.data.length -1)
+
+  if(response.data[ln].name === 'master'){
+      screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
+      + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+      + response.data[ln].comment + '</p></div></div>');
+  }else if(response.data[ln].name === ''){
+      screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+      + 'user' + '</p></div><div class="output-text"><p class="ot">'
+      + response.data[ln].comment + '</p></div></div>');
+  }else{
+      screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+      + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+      + response.data[ln].comment + '</p></div></div>');
+  }
 });

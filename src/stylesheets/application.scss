@@ -48,13 +48,13 @@ $color4: #551A8B;
 .link{
   width: 30%;
   height: 100%;
-  background-color: $color2;
+  background-color: $color3;
   border-radius: 10px;
   position: relative;
-  transition: all 1s;
+  transition: all 0.7s;
   &:hover{
+    background-color: $color2;
     transition: all 0.8s;
-    box-shadow: 0 1px $color4;
     color: $color4;
   }
   &:active{
@@ -72,32 +72,26 @@ $color4: #551A8B;
   margin-bottom: auto;
 }
 
-.fab{
-  font-weight: bold;
-  font-size: 20px;
-  width: 50%;
-  height: 100%;
-  line-height: 54px;
-  // margin-right: 150px;
-}
-
-.github{
-  display: flex;
-}
-
-.linkToGit a{
-  width: 50%;
-}
-
 .main-container{
   width: 100%;
   min-height: 650px;
   position: relative;
 }
 
+.fab{
+  font-size: 30px;
+  line-height: 70px;
+  color: black;
+  transition: all 0.7s;
+  &:hover{
+    color: $color4;
+  }
+}
+
 .trigger{
   width: 50px;
   height: 50px;
+  margin-left: 20px;
   opacity: 0.7;
   margin-top: auto;
   margin-bottom: auto;
@@ -107,9 +101,7 @@ $color4: #551A8B;
   line-height: 50px;
   font-size: 30px;
   color: black;
-  &:active{
-    color: $color4;
-  }
+  transition: all 0.7s;
   &:hover{
     color: $color4;
   }
@@ -162,7 +154,6 @@ $color4: #551A8B;
 
 .info{
   width: 100%;
-  // background-color: white;
   overflow-y: scroll;
 }
 
@@ -174,7 +165,7 @@ $color4: #551A8B;
   z-index: 1;
   right: 30px;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px $color3;
+  box-shadow: 5px 5px 5px lighten($color1,15%);
   display: none;
   background-color: $color1;
 }

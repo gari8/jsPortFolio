@@ -18,20 +18,13 @@ const mainBar = document.querySelector(".num1-container");
 const trigger = document.querySelector(".trigger");
 let i = 0;
 
-// topページお知らせスライド
+//お知らせスライド
 trigger.addEventListener("click", (evt)=>{
     i++;
     if(i%2 !== 0){
-        infoBar.style.width="0";
-        infoBar.style.height="0"
-        mainBar.style.width="100%";
-        mainBar.style.margin="0";
-        trigger.style.transform="rotate(-45deg)";
+        infoBar.style.display="block"
     }else if (i%2 === 0){
-        infoBar.style.width="40%";
-        mainBar.style.width="50%";
-        mainBar.style.margin="0 0 0 10%";
-        trigger.style.transform="rotate(0deg)";
+        infoBar.style.display="none"
     }
 })
 

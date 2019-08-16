@@ -75,10 +75,18 @@ $color4: #551A8B;
 .fab{
   font-weight: bold;
   font-size: 20px;
-  width: 100%;
+  width: 50%;
   height: 100%;
   line-height: 54px;
-  margin-right: 150px;
+  // margin-right: 150px;
+}
+
+.github{
+  display: flex;
+}
+
+.linkToGit a{
+  width: 50%;
 }
 
 .main-container{
@@ -88,18 +96,23 @@ $color4: #551A8B;
 }
 
 .trigger{
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  top: 3px;
-  right: 3px;
+  width: 50px;
+  height: 50px;
   opacity: 0.7;
-  background-image: url("./images/out.png");
-  background-position: center;
-  background-size: cover;
-  border: 1px solid black;
-  border-radius: 50%;
-  transition: all 0.4s;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.fas{
+  line-height: 50px;
+  font-size: 30px;
+  color: black;
+  &:active{
+    color: $color4;
+  }
+  &:hover{
+    color: $color4;
+  }
 }
 
 
@@ -133,9 +146,8 @@ $color4: #551A8B;
 }
 
 .num1-container{
-  margin-left: 10%;
-  width: 50%;
-  transition: all 0.7s;
+  width: 100%;
+  transition: all 0.6s;
 }
 
 .picture{
@@ -150,18 +162,21 @@ $color4: #551A8B;
 
 .info{
   width: 100%;
-  min-height: 100%;
-  background-color: white;
+  // background-color: white;
   overflow-y: scroll;
-    & > .wrapper{
-      padding-bottom: 15px;
-    }
 }
 
 .info-container{
-  height: 100%;
+  padding: 20px 0;
+  max-height: 80%;
   width: 40%;
-  // margin-top: 3%;
+  position: fixed;
+  z-index: 1;
+  right: 30px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px $color3;
+  display: none;
+  background-color: $color1;
 }
 
 table{
@@ -444,15 +459,16 @@ label{
     display: block;
   }
 
-  .trigger{
-    display: none;
+  .info-container{
+    position: fixed;
+    right: 30px;
+    top: 70px;
   }
 
   .num1-container,
-  .info-container,
   .num2-container,
   .message-container{
-    margin: 0 auto;
+    margin: 0 auto 0 auto;
     width: 90%;
   }
 
@@ -502,10 +518,6 @@ label{
     display: block;
   }
 
-  .trigger{
-    display: none;
-  }
-
   .num1-wrapper{
     display: block;
   }
@@ -515,7 +527,7 @@ label{
   .num2-container,
   .modal-container,
   .message-container{
-    margin: 0 auto;
+    margin: 0 auto 0 auto;
     width: 90%;
   }
 

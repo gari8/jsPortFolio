@@ -1,5 +1,10 @@
-const infoDate = document.querySelector(".new-info");
+//axios
+import axios from 'axios';
+import Chat from 'modules/chat';
+import Info from 'modules/info';
+import Portfolio from 'modules/portFolio';
 // contact機能
+const chat = new Chat();
 const screen = document.querySelector(".message-container");
 const textInput = document.querySelector(".text-input");
 const nameInput = document.querySelector(".name-input");
@@ -11,14 +16,17 @@ const contact = document.querySelector(".toContact");
 const view = document.querySelector(".main-container");
 console.log(view.children)
 // portfolio追加
+const portFolio = new Portfolio();
 const portFolioBoard = document.querySelector(".num2-container");
-// (仮)お知らせスライドアウト
+// info機能
+const infoDate = document.querySelector(".new-info");
+const info = new Info();
 const infoBar = document.querySelector(".info-container");
 const mainBar = document.querySelector(".num1-container");
 const trigger = document.querySelector(".trigger");
 let i = 0;
 
-//お知らせスライド
+//infoBar slideIn
 trigger.addEventListener("click", (evt)=>{
     i++;
     if(i%2 !== 0){
@@ -46,12 +54,8 @@ contact.addEventListener("click",function num3(){
 });
 
 
-//axios
-import axios from 'axios';
 // info
-axios.get('https://script.google.com/macros/s/AKfycbw3Cg2bLfJXtd5ck9KlTgzrKEDifG2MDopfcJozJujnE_8kH8o/exec')
-  .then(function (response) {
-    // handle success
+info.fetch().then(function(response){
     for(let i = 0; i < response.data.length; i++){
         let dateMonth = new Date(response.data[i].dateTime).getMonth();
         let dateYear = new Date(response.data[i].dateTime).getFullYear();
@@ -61,18 +65,10 @@ axios.get('https://script.google.com/macros/s/AKfycbw3Cg2bLfJXtd5ck9KlTgzrKEDifG
         <td class="contents">${response.data[i].information}</td>
         </tr>`
     }
-  })
-  .catch(function (error) {
-    // handle error
-  })
-  .finally(function () {
-    // always executed
-  });
+});
 
 // portfolio追加
-axios.get('https://script.google.com/macros/s/AKfycbxosPycRtZN20PgsywESuU6D9iITnyY1r4dEtfHU8jUBuEXwLc/exec')
-  .then(function (response) {
-    // handle success
+portFolio.fetch().then(function (response) {
     for(let i = 0; i < response.data.length; i++){
         portFolioBoard.innerHTML +=
         `
@@ -85,18 +81,10 @@ axios.get('https://script.google.com/macros/s/AKfycbxosPycRtZN20PgsywESuU6D9iITn
         </div>
         `
     }
-  })
-  .catch(function (error) {
-    // handle error
-  })
-  .finally(function () {
-    // always executed
-  });
+});
 
-// contact
-axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec')
-.then(function (response) {
-    // handle success
+// chatget
+chat.fetch().then(function(response){
     for(let i = 0; i < response.data.length; i++){
         if(response.data[i].name === 'master'){
             screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
@@ -112,49 +100,32 @@ axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8v
             + response.data[i].comment + '</p></div></div>');
         }
     }
-})
-.catch(function (error) {
-    // handle error
-})
-.finally(function () {
-// always executed
 });
-
-
 
 // チャット入力
 // nameがmasterなら左側に出力それ以外なら右側に出力
 // textが空なら表示されない
 submit.addEventListener("click",async (evt)=>{
-    if(textInput.value !== ''){
-        await axios.post('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec', {
-          name: nameInput.value,
-          comment: textInput.value
-        }, {
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        })
-          .then(response => {
-          }).catch(error => {
-          });
-        textInput.value = "";
-        nameInput.value = "";
-        await axios.get('https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec')
-              .then(function (response) {
-                　　// handle success
-                　　let ln = (response.data.length -1)
-                    if(response.data[ln].name === 'master'){
-                        screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
-                        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
-                        + response.data[ln].comment + '</p></div></div>');
-                    }else if(response.data[ln].name === ''){
-                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-                        + 'user' + '</p></div><div class="output-text"><p class="ot">'
-                        + response.data[ln].comment + '</p></div></div>');
-                    }else{
-                        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-                        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
-                        + response.data[ln].comment + '</p></div></div>');
-                    }
-              })
-        }
+    if(textInput.value === '') return
+
+    await chat.send(nameInput.value, textInput.value);
+    textInput.value = "";
+    nameInput.value = "";
+
+    const response = await chat.fetch();
+
+　　let ln = (response.data.length -1)
+    if(response.data[ln].name === 'master'){
+        screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
+        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+        + response.data[ln].comment + '</p></div></div>');
+    }else if(response.data[ln].name === ''){
+        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+        + 'user' + '</p></div><div class="output-text"><p class="ot">'
+        + response.data[ln].comment + '</p></div></div>');
+    }else{
+        screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
+        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+        + response.data[ln].comment + '</p></div></div>');
+    }
 });

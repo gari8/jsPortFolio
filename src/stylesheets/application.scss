@@ -137,7 +137,6 @@ $color4: #551A8B;
   top: 50%;
   left: 70px;
   transform: translateY(-50%);
-  // border-radius: 10px;
   box-shadow: 5px 5px 5px lighten($color1,15%);
   display: none;
   background-color: lighten($color1,15%);
@@ -200,7 +199,6 @@ table{
 .skill-container{
   z-index: 1;
   padding: 20px 0;
-  max-height: 60%;
   width: 60%;
   position: fixed;
   top: 50%;

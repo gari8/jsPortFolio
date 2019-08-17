@@ -576,6 +576,73 @@ label{
   }
 
   .num3-container{
+    padding: 0;
+    display: block;
+    margin: 30px auto;
+  }
+
+  .modal{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .modal-container{
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width:400px) {
+  main{
+    overflow: visible;
+  }
+
+  .num1-wrapper{
+    display: block;
+  }
+
+  .info-container,
+  .skill-container{
+    width: 90%;
+    top: 7%;
+    left: 5%;
+    transform: translateY(0);
+  }
+
+  .num1-container,
+  .num2-container,
+  .modal-container,
+  .message-container{
+    margin: 0 auto 0 auto;
+    width: 100%;
+  }
+
+  .container{
+    width: 100%;
+    display: flex;
+    padding: 0 2%;
+  }
+
+  .header{
+    top: 0;
+    left: 0;
+    transform: translateY(0);
+    width: 100%;
+  }
+
+  .fab{
+    margin-right: 0;
+  }
+
+  .main-title{
+    width: 100%;
+  }
+
+  .num2-item{
+    width: 100%;
+  }
+
+  .num3-container{
+    padding: 0;
     display: block;
     margin: 30px auto;
   }

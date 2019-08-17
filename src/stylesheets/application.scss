@@ -153,33 +153,29 @@ table{
 }
 
 .date-header{
-  border:2px solid  darken(grey,20%);
   width: 30%;
   height: 20px;
-  background-color: darken(grey,20%);
   text-align: center;
 }
 
 .contents-header{
-  border:2px solid  darken(grey,20%);
   width: 70%;
   height: 20px;
-  background-color: darken(grey,20%);
   text-align: center;
 }
 
 .date{
-  border:2px solid $color2;
   width: 30%;
   height: 40px;
-  background-color: $color2;
+  background-color: white;
+  color: $color1;
 }
 
 .contents{
-  border:2px solid $color2;
   width: 70%;
   height: 40px;
-  background-color: $color2;
+  background-color: white;
+  color: $color1;
 }
 
 .profile{

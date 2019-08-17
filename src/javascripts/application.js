@@ -14,7 +14,6 @@ const top = document.querySelector(".toTop");
 const about = document.querySelector(".toAbout");
 const contact = document.querySelector(".toContact");
 const view = document.querySelector(".main-container");
-console.log(view.children)
 // portfolio追加
 const portFolio = new Portfolio();
 const portFolioBoard = document.querySelector(".num2-container");
@@ -24,15 +23,27 @@ const info = new Info();
 const infoBar = document.querySelector(".info-container");
 const mainBar = document.querySelector(".num1-container");
 const trigger = document.querySelector(".trigger");
-let i = 0;
-
+//skill-container
+const skillBtn = document.querySelector(".skill-btn");
+const skillBar = document.querySelector(".skill-container");
 //infoBar slideIn
+let i = 0;
 trigger.addEventListener("click", (evt)=>{
     i++;
     if(i%2 !== 0){
         infoBar.style.display="block"
     }else if (i%2 === 0){
         infoBar.style.display="none"
+    }
+})
+//skill-container
+let j = 0;
+skillBtn.addEventListener("click", (e)=>{
+    j++;
+    if(j%2 !== 0){
+        skillBar.style.display="block"
+    }else if (j%2 === 0){
+        skillBar.style.display="none"
     }
 })
 

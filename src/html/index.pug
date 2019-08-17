@@ -1,23 +1,6 @@
 extends /layout/_application
 
 block content
-  header.header
-    nav.nav-bar
-      div.container
-        div.logo
-      div.container.hundle
-        div.link.toTop
-          p.link-text TOP
-        div.link.toAbout
-          p.link-text PORTFOLIO
-        div.link.toContact
-          p.link-text CONTACT
-      div.github
-        p.linkToGit
-          a(href="https://github.com/HAGARIHAYATO")
-           i.fab.fa-github-square
-      div.trigger
-        i.fas.fa-bell
   div.info-container
     div.info
       div.wrapper
@@ -28,26 +11,40 @@ block content
                 p 日付
               td.contents-header
                 p お知らせ
+  div.skill-container
+            h2.main-title SKILL
+            div.skill
+              div.skill-img
+              div.skill-img
+              div.skill-img
+              div.skill-img
+              div.skill-img
+              div.skill-img
+              div.skill-img
+              div.skill-img
+              div.skill-img
+              div.skill-img
   div.main-container
     section.num1
       div.num1-wrapper
         div.num1-container
-          h2.main-title THANKS FOR YOUR COMING
+          h2.main-title MY SITE
           div.picture
-          div.profile-container
-            p NAME: HAGARI HAYATO
-            p AGE: 24
-            p JOB: u-student
-            p HOBBY: SKATE
-          div.detail
-            a(href="#") MY BLOG
+          div.profile
+            div.profile-container
+              p NAME: HAGARI HAYATO
+              p AGE: 24
+              p JOB: u-student
+              p HOBBY: SKATE
+            div.detail
+              a(href="#") MY BLOG
     section.num2
-      h2.main-title PORTFOLIO
+      h2.main-title WORKS
       div.num2-container
     section.num3
+      h2.main-title CONTACT
       div.num3-container
         section.modal-container
-          h2.main-title CONTACT
           div.modal
             div.modal-item-container
               div.x-mark
@@ -59,6 +56,27 @@ block content
               h4.submit GO
         div.message-container
           div.wrapper
-  div.modal-overlay
+  nav.nav-bar.header
+    div.container.hundle
+      div.toTop.link
+        i.fab.fa-fort-awesome-alt
+        p.fa-title TOP
+      div.toAbout.link
+        i.fas.fa-code
+        p.fa-title WORKS
+      div.toContact.link
+        i.fas.fa-envelope-open-text
+        p.fa-title CONTACT
+      div.trigger.link
+        i.fas.fa-bell
+        p.fa-title INFO
+      div.skill-btn.link
+        i.fas.fa-book-reader
+        p.fa-title SKILL
+      div.github.link
+        p.linkToGit
+          a(href="https://github.com/HAGARIHAYATO")
+            i.fab.fa-github-square
+          p.fa-title GITHUB
   footer.footer
     p.footer-text &copy;hayato.inc

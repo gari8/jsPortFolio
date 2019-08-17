@@ -15,26 +15,17 @@ $color4: #551A8B;
 }
 
 .header{
-  height: 70px;
-  width: 100%;
-  background-color: $color3;
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
 }
 
 .nav-bar{
-  display: flex;
-  justify-content: space-around;
-  width: 90%;
-  height: 100%;
+  background-color: $color3;
+  border-radius: 30px;
   margin: 0 auto;
-}
-
-.logo{
-  width: 60%;
-  height: 100%;
-  background-image: url("./images/logo-skate.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .link-text{
@@ -45,29 +36,8 @@ $color4: #551A8B;
   font-weight: bold;
 }
 
-.link{
-  width: 30%;
-  height: 100%;
-  background-color: $color3;
-  border-radius: 10px;
-  position: relative;
-  transition: all 0.7s;
-  &:hover{
-    background-color: $color2;
-    transition: all 0.8s;
-    color: $color4;
-  }
-  &:active{
-    transition: all 0.01s;
-    background-color: black;
-  }
-}
-
 .container{
-  display: flex;
-  justify-content: space-around;
-  width: 40%;
-  height: 90%;
+  padding: 20px 0 30px 0;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -78,40 +48,37 @@ $color4: #551A8B;
   position: relative;
 }
 
-.fab{
-  font-size: 30px;
-  line-height: 70px;
-  color: black;
-  transition: all 0.7s;
-  &:hover{
-    color: $color4;
-  }
+.link{
+  opacity: 0.7;
 }
 
-.trigger{
+.fas,
+.fab{
+  line-height: 50px;
   width: 50px;
   height: 50px;
-  margin-left: 20px;
-  opacity: 0.7;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.fas{
-  line-height: 50px;
   font-size: 30px;
+  text-align: center;
   color: black;
   transition: all 0.7s;
   &:hover{
     color: $color4;
   }
+}
+
+.fa-title{
+  font-size: 8px;
+  text-align: center;
+  width: 50px;
 }
 
 
 .main-title{
   // color: $color4;
-  margin: 60px auto;
-  width: 60%;
+  font-size: 30px;
+  font-family: Baskerville;
+  margin: 30px auto;
+  width: 80%;
   height: 60px;
   line-height: 60px;
   text-align: center;
@@ -119,15 +86,18 @@ $color4: #551A8B;
 // topページ
 .num1{
   display: block;
+  padding: 60px 0;
 }
 // aboutページ
 .num2{
   display: none;
+  padding: 60px 0;
 }
 // contactページ
 .num3{
   display: none;
   position: relative;
+  padding: 60px 0;
 }
 // ここからtopページcss
 
@@ -143,12 +113,13 @@ $color4: #551A8B;
 }
 
 .picture{
-  width: 300px;
-  height: 200px;
+  width: 70%;
+  height: 500px;
   background-image: url("./images/hobby1.jpg");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
-  margin: 0 auto 25px auto;
+  margin: 0 auto 60px auto;
 }
 
 
@@ -160,14 +131,17 @@ $color4: #551A8B;
 .info-container{
   padding: 20px 0;
   max-height: 80%;
-  width: 40%;
+  width: 60%;
   position: fixed;
-  z-index: 1;
-  right: 30px;
-  border-radius: 10px;
+  z-index: 2;
+  top: 50%;
+  left: 70px;
+  transform: translateY(-50%);
+  // border-radius: 10px;
   box-shadow: 5px 5px 5px lighten($color1,15%);
   display: none;
-  background-color: $color1;
+  background-color: lighten($color1,15%);
+  opacity: 0.97;
 }
 
 table{
@@ -208,12 +182,87 @@ table{
   background-color: $color2;
 }
 
+.profile{
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-around;
+}
+
 .profile-container{
   margin: 0 auto;
   & > p{
+    margin: 10px;
+    font-family: Baskerville;
     text-align: center;
     font-weight: bold;
     font-size: 18px;
+  }
+}
+
+.skill-container{
+  z-index: 1;
+  padding: 20px 0;
+  max-height: 60%;
+  width: 60%;
+  position: fixed;
+  top: 50%;
+  left: 70px;
+  transform: translateY(-50%);
+  box-shadow: 5px 5px 5px lighten($color1,15%);
+  display: none;
+  background-color: lighten($color1,15%);
+  opacity: 0.97;
+  & > .main-title{
+    margin: 10px auto;
+    color: white;
+    font-size: 20px;
+  }
+}
+
+.skill{
+  width: 60%;
+  margin: 60px auto 100px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.skill-img{
+  margin: 10px;
+  width: 70px;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  &:nth-child(1){
+    background-image: url("./images/html-5.svg");
+  }
+  &:nth-child(2){
+    background-image: url("./images/css-3.svg");
+  }
+  &:nth-child(3){
+    background-image: url("./images/es6.svg");
+  }
+  &:nth-child(4){
+    background-image: url("./images/ruby.svg");
+  }
+  &:nth-child(5){
+    background-image: url("./images/react.svg");
+  }
+  &:nth-child(6){
+    background-image: url("./images/rails.svg");
+  }
+  &:nth-child(7){
+    background-image: url("./images/pug.svg");
+  }
+  &:nth-child(8){
+    background-image: url("./images/sass.svg");
+  }
+  &:nth-child(9){
+    background-image: url("./images/slack.svg");
+  }
+  &:nth-child(10){
+    background-image: url("./images/github-octocat.svg");
   }
 }
 
@@ -285,13 +334,14 @@ table{
 .num3-container{
   display: flex;
   justify-content: space-between;
+  padding: 30px;
 }
 
 .message-container{
-  width: 50%;
+  width: 60%;
   height: 600px;
   margin: 20px auto;
-  background-color: lighten($color3,25%);
+  // background-color: lighten($color3,25%);
   overflow: scroll;
 }
 
@@ -305,7 +355,7 @@ table{
   height: 320px;
   margin: 0 auto;
   align-content: center;
-  border: 1px solid $color3;
+  // border: 1px solid $color3;
 }
 
 .modal-item{
@@ -324,7 +374,7 @@ label{
 }
 
 .modal-container{
-  width: 50%;
+  width: 40%;
   height: 40%;
 }
 
@@ -375,6 +425,7 @@ label{
   &:active{
     box-shadow: 0 0 black;
     margin-top: 25px;
+    font-size: 10px;
   }
   &:hover{
     background-color: darken($color4,10%);
@@ -426,7 +477,12 @@ label{
 .footer{
   width: 100%;
   height: 70px;
-  background-color: $color3;
+  // background-color: $color3;
+}
+
+.footer-hundle{
+  display: flex;
+  justify-content: space-around;
 }
 
 .footer-text{
@@ -442,18 +498,8 @@ label{
     overflow: visible;
   }
 
-  .fab{
-    margin-right: 0;
-  }
-
   .num1-wrapper{
     display: block;
-  }
-
-  .info-container{
-    position: fixed;
-    right: 30px;
-    top: 70px;
   }
 
   .num1-container,
@@ -496,39 +542,30 @@ label{
     overflow: visible;
   }
 
-  .num1{
-    display: block;
-  }
-
-  .num2{
-    display: block;
-    background-color: lighten($color3,20%);
-  }
-
-  .num3{
-    display: block;
-  }
-
   .num1-wrapper{
     display: block;
   }
 
-  .num1-container,
   .info-container,
+  .skill-container{
+    width: 80%;
+  }
+
+  .num1-container,
   .num2-container,
   .modal-container,
   .message-container{
     margin: 0 auto 0 auto;
-    width: 90%;
+    width: 80%;
   }
 
   .container{
     width: 100%;
   }
 
-  .hundle{
-    display: none;
-  }
+  // .hundle{
+  //   display: none;
+  // }
 
   .fab{
     margin-right: 0;

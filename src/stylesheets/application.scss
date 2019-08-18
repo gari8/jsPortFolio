@@ -114,7 +114,7 @@ $color4: #551A8B;
 .picture{
   width: 70%;
   height: 500px;
-  background-image: url("./images/hobby1.jpg");
+  background-image: url("../images/hobby1.jpg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -230,34 +230,34 @@ table{
   background-position: center;
   background-size: contain;
   &:nth-child(1){
-    background-image: url("./images/html-5.svg");
+    background-image: url("../images/html-5.svg");
   }
   &:nth-child(2){
-    background-image: url("./images/css-3.svg");
+    background-image: url("../images/css-3.svg");
   }
   &:nth-child(3){
-    background-image: url("./images/es6.svg");
+    background-image: url("../images/es6.svg");
   }
   &:nth-child(4){
-    background-image: url("./images/ruby.svg");
+    background-image: url("../images/ruby.svg");
   }
   &:nth-child(5){
-    background-image: url("./images/react.svg");
+    background-image: url("../images/react.svg");
   }
   &:nth-child(6){
-    background-image: url("./images/rails.svg");
+    background-image: url("../images/rails.svg");
   }
   &:nth-child(7){
-    background-image: url("./images/pug.svg");
+    background-image: url("../images/pug.svg");
   }
   &:nth-child(8){
-    background-image: url("./images/sass.svg");
+    background-image: url("../images/sass.svg");
   }
   &:nth-child(9){
-    background-image: url("./images/slack.svg");
+    background-image: url("../images/slack.svg");
   }
   &:nth-child(10){
-    background-image: url("./images/github-octocat.svg");
+    background-image: url("../images/github-octocat.svg");
   }
 }
 
@@ -284,7 +284,7 @@ table{
   width: 70%;
   height: 200px;
   margin: 30px auto 60px auto;
-  background-image: url("./images/pen.jpg");
+  background-image: url("../images/pen.jpg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

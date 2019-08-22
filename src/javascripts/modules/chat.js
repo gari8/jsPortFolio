@@ -3,8 +3,6 @@ import axios from 'axios';
 const URL1 = 'https://script.google.com/macros/s/AKfycbxBjok29e-9FOoW-sAAIw9ZV2Sh8vc6-L0nY6oEn5uEdXKenwZk/exec';
 
 export default class Chat{
-    constructor(){
-    }
     async send(name, comment){
     	return await axios.post(URL1,{
     		name: name,

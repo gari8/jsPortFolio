@@ -98,45 +98,40 @@ portFolio.fetch().then(function (response) {
 chat.fetch().then(function(response){
     for(let i = 0; i < response.data.length; i++){
         if(response.data[i].name === 'master'){
-            screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
-            + response.data[i].name + '</p></div><div class="output-text"><p class="ot">'
+            screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">管理者</p></div><div class="output-text"><p class="ot">'
             + response.data[i].comment + '</p></div></div>');
         }else if(response.data[i].name === ''){
             screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-            + 'user' + '</p></div><div class="output-text"><p class="ot">'
+            + '匿名さん' + '</p></div><div class="idnum">ID : ' + response.data[i].id + '</div><div class="output-text"><p class="ot">'
             + response.data[i].comment + '</p></div></div>');
         }else{
             screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-            + response.data[i].name + '</p></div><div class="output-text"><p class="ot">'
+            + response.data[i].name + '</p></div><div class="idnum">ID : ' + response.data[i].id + '</div><div class="output-text"><p class="ot">'
             + response.data[i].comment + '</p></div></div>');
         }
     }
 });
-
 // チャット入力
 // nameがmasterなら左側に出力それ以外なら右側に出力
 // textが空なら表示されない
 submit.addEventListener("click",async (evt)=>{
     if(textInput.value === '') return
-
     await chat.send(nameInput.value, textInput.value);
     textInput.value = "";
     nameInput.value = "";
-
     const response = await chat.fetch();
-
-　　let ln = (response.data.length -1)
+    console.log(response.data[i])
+    let ln = (response.data.length -1)
     if(response.data[ln].name === 'master'){
-        screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">'
-        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+        screen.innerHTML += ('<div class="master-comment"><div class="output-name"><p class="on">管理者</p></div><div class="output-text"><p class="ot">'
         + response.data[ln].comment + '</p></div></div>');
     }else if(response.data[ln].name === ''){
         screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-        + 'user' + '</p></div><div class="output-text"><p class="ot">'
+        + '匿名さん' + '</p></div><div class="idnum">ID : ' + response.data[ln].id + '</div><div class="output-text"><p class="ot">'
         + response.data[ln].comment + '</p></div></div>');
     }else{
         screen.innerHTML += ('<div class="comment"><div class="output-name"><p class="on">'
-        + response.data[ln].name + '</p></div><div class="output-text"><p class="ot">'
+        + response.data[ln].name + '</p></div><div class="idnum">ID : ' + response.data[ln].id + '</div><div class="output-text"><p class="ot">'
         + response.data[ln].comment + '</p></div></div>');
     }
 });

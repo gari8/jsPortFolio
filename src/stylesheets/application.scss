@@ -447,6 +447,8 @@ label{
 }
 
 .message-container{
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .comment{
@@ -457,12 +459,13 @@ label{
   color: black;
   opacity: 0.9;
   transition: all 0.7s;
+  border: 1px solid lighten($color3, 20%);
   &:hover{
     margin-left: 0;
     width: 100%;
     opacity: 1;
     background-color: $color3;
-
+    border: 1px solid $color3;
   }
 }
 
@@ -472,14 +475,15 @@ label{
   min-height: 100px;
   color: white;
   background-color: lighten($color1,20%);
-  box-shadow: 1px 2px $color2;
   opacity: 0.9;
   transition: all 0.7s;
+  border: 1px solid lighten($color1,20%);
   &:hover{
     margin-left: 0;
     width: 100%;
     opacity: 1;
     background-color: $color1;
+    border: 1px solid $color1;
   }
 }
 
@@ -505,8 +509,11 @@ label{
 }
 
 .on{
+  border-radius: 0 10px 10px 0;
+  background-color: white;
   font-weight: bold;
   text-align: center;
+  color: black;
 }
 
 .footer{

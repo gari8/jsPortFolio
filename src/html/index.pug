@@ -30,21 +30,23 @@ block content
         div.num1-container
           h2.main-title MY SITE
           div.picture
-          div.profile
-            div.profile-container
-              p NAME: HAGARI HAYATO
-              p AGE: 24
-              p JOB: u-student
-              p HOBBY: SKATE
-            div.detail
-              a(href="#") MY BLOG
+          div.profile-container
+            p NAME: HAGARI HAYATO
+            p AGE: 24
+            p JOB: u-student
+            p HOBBY: SKATE
+          div.detail
+            a(href="#") MY BLOG
     section.num2
       h2.main-title WORKS
-      div.works-pict
-      div.num2-container
+      //- div.works-pict
+      div.num2-wrapper
+        div.num2-container
     section.num3
       h2.main-title CONTACT
       div.num3-container
+        div.message
+          div.message-container
         section.modal-container
           div.modal
             div.modal-item-container
@@ -55,8 +57,6 @@ block content
               div.modal-item
                 textarea.text-input
               h4.submit GO
-        div.message-container
-          div.wrapper
   nav.nav-bar.header
     div.container.hundle
       div.toTop.link

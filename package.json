@@ -22,7 +22,7 @@
     "extract-text-webpack-plugin": "next",
     "file-loader": "^1.1.11",
     "glob": "^7.1.2",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-clean-css": "^3.10.0",
     "gulp-documentation": "^3.2.1",
     "gulp-ejs": "^3.1.3",

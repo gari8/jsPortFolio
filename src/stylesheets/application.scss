@@ -84,18 +84,18 @@ $color4: #551A8B;
 }
 // topページ
 .num1{
-  // display: none;
-  display: block;
+  display: none;
+  // display: block;
   padding: 60px 0;
 }
 // aboutページ
 .num2{
-  display: none;
+  display: block;
+  // display: none;
   padding: 60px 0;
 }
 // contactページ
 .num3{
-  // display: block;
   display: none;
   position: relative;
   padding: 60px 0;
@@ -178,12 +178,6 @@ table{
   height: 40px;
   background-color: white;
   color: $color1;
-}
-
-.profile{
-  padding: 0 10%;
-  display: flex;
-  justify-content: space-around;
 }
 
 .profile-container{
@@ -281,35 +275,28 @@ table{
 }
 
 // ここからworksページcss
+.num2-wrapper{
+  overflow: scroll;
+}
 
 .num2-container{
-  width: 70%;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: center;
+  flex-flow: row-reverse wrap-reverse;
 }
 
 .num2-item{
-  background-color: lighten($color3,10%);
-  width: 30%;
-  // display: flex;
-  justify-content: space-between;
-  padding: 0 5px;
-  margin-bottom: 30px;
-  border-radius: 10px;
-  border: 1px solid black;
-  transition: all 1s;
+  width: 35%;
+  margin: 1% 1%;
+  transition: all .5s;
   text-align: center;
+  box-shadow: 0 1px 3px lighten(grey,10%);
+  border-radius: 5px;
   &:hover{
-    // display: block;
-    transition: all 1s;
-    background-color: darken($color3,10%);
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
+    transform: scale(1.05);
+    transition: all .5s;
+    // background-color: darken($color3,10%);
   }
 }
 
@@ -327,7 +314,11 @@ table{
 }
 
 .num2-item-name{
-  margin: 20px 10px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Optima', sans-serif;
+  line-height: 50px;
 }
 
 .num2-item-content{

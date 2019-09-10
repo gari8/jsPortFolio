@@ -84,9 +84,9 @@ portFolio.fetch().then(function (response) {
         portFolioBoard.innerHTML +=
         `
         <div class="num2-item">
-            <h5 class="num2-item-name">${response.data[i].name}</h5>
+            <p class="num2-item-name">${response.data[i].name}</p>
+            <a href="${response.data[i].link}" class="num2-link">${response.data[i].link}</a>
             <div class="num2-text">
-                <a href="${response.data[i].link}" class="num2-link">${response.data[i].link}</a>
                 <p class="num2-item-content">${response.data[i].body}</p>
             </div>
         </div>
@@ -135,3 +135,4 @@ submit.addEventListener("click",async (evt)=>{
         + response.data[ln].comment + '</p></div></div>');
     }
 });
+

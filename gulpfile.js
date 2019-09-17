@@ -89,3 +89,16 @@ gulp.task('reload', function () {
 
 gulp.task('build', ['javascript', 'sass', 'pug', 'image']);
 gulp.task('default', ['build', 'browser-sync']);
+
+
+const sitemap = require('gulp-sitemap');
+
+gulp.task('sitemap', function () {
+    gulp.src('build/**/*.html', {
+            read: false
+        })
+        .pipe(sitemap({
+            siteUrl: 'https://hagarihayato.github.io/jsPortFolio/dest/'
+        }))
+        .pipe(gulp.dest('./build'));
+});

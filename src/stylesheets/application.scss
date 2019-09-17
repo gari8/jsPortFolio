@@ -127,11 +127,11 @@ $color4: #551A8B;
 .info{
   width: 100%;
   overflow-y: scroll;
+  height: 500px;
 }
 
 .info-container{
   padding: 20px 0;
-  max-height: 80%;
   width: 60%;
   position: fixed;
   z-index: 2;
@@ -153,8 +153,9 @@ table{
 }
 
 .new-info > tr:hover{
-  transform: scale(1.03);
-  transition: all .5s;
+  background-color: blue;
+  opacity: 0.9;
+  transition: all .7s;
 }
 
 .date-header{
@@ -173,16 +174,18 @@ table{
   text-align: center;
   width: 30%;
   height: 40px;
-  background-color: white;
-  color: $color1;
+  // background-color: white;
+  // color: $color1;
+  color: white;
 }
 
 .contents{
   text-align: center;
   width: 70%;
   height: 40px;
-  background-color: white;
-  color: $color1;
+  // background-color: white;
+  // color: $color1;
+  color: white;
 }
 
 .profile-container{
